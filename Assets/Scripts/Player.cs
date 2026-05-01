@@ -44,7 +44,8 @@ public class Player : MonoBehaviour
         movement = movement.normalized;
 
         float speed = Input.GetKey(KeyCode.LeftShift) ? runSpeed : walkSpeed;
-        Vector3 nextPosition = rb.position + movement * speed * Time.fixedDeltaTime;
-        rb.MovePosition(nextPosition);
+        Vector3 velocity = movement * speed;
+        velocity.y = rb.velocity.y;
+        rb.velocity = velocity;
     }
 }
